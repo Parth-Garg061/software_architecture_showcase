@@ -1,13 +1,13 @@
 import 'package:books_project_dbms/models/data_models/book_model.dart';
-import 'package:books_project_dbms/models/database_manager/database_helper.dart';
+import 'package:books_project_dbms/services/database_helper.dart';
 
 class AddBookController {
 
-  Future<void> addBook(BookModel? bookModelParam) async {
+  addBook(BookModel? bookModelParam) {
 
-    await DatabaseHelper().insertBook(bookModelParam!);
+    DatabaseHelper.instance.insertBook(bookModelParam!);
+
     print("Book Added");
-
   }
 
 }

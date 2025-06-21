@@ -1,10 +1,8 @@
 import 'package:books_project_dbms/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:books_project_dbms/views/add_book_home.dart';
 import 'package:books_project_dbms/views/book_list_home.dart';
 import 'package:books_project_dbms/main.dart';
-import 'package:books_project_dbms/models/database_manager/shared_pref.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:books_project_dbms/main.dart';
-import 'package:books_project_dbms/models/database_manager/shared_pref.dart';
+import 'package:books_project_dbms/services/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 class HomeController {

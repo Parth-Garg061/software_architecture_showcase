@@ -1,8 +1,6 @@
 import 'package:books_project_dbms/controllers/book_list_controller.dart';
-import 'package:books_project_dbms/models/database_manager/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:books_project_dbms/models/data_models/book_model.dart';
-import 'package:books_project_dbms/models/database_manager/shared_pref.dart';
 import 'package:flutter/src/painting/borders.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,7 +24,7 @@ class _BookListHomeState extends State<BookListHome> {
         icon: Icon(Icons.check_box_rounded), label: "Completed"),
   ];
 
-  Future loadBooks()  {
+  Future loadBooks() {
     return BookListController().getFilteredBooks(selectedIndex - 1);
   }
 
@@ -82,10 +80,17 @@ class _BookListHomeState extends State<BookListHome> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Checkbox(
-                                      value: book.isChecked == 0 ? false : true,
+                                      value: book.isChecked == 1,
                                       onChanged: (value) async {
-                                        final bookModel = BookModel(bookName: book.bookName, bookID: book.bookID, isChecked: !value! ? 1 :0);
-                                        await BookListController().updateBook(bookModel);
+                                        if (value == null) return;
+
+                                        final updatedBook = BookModel(
+                                          bookName: book.bookName,
+                                          bookID: book.bookID,
+                                          isChecked: value ? 1 : 0,
+                                        );
+
+                                        await BookListController().updateBook(updatedBook);
                                         final filtered = await BookListController().getFilteredBooks(selectedIndex - 1);
                                         setState(() {
                                           booksData = filtered;
@@ -126,7 +131,7 @@ class _BookListHomeState extends State<BookListHome> {
             );
           } else {
             return Container(
-              child: Text("Books Not Available"),
+              child: CircularProgressIndicator(),
             );
           }
         }

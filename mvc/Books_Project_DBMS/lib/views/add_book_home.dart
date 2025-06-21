@@ -1,9 +1,9 @@
 import 'package:books_project_dbms/controllers/add_book%20controller.dart';
-import 'package:books_project_dbms/models/database_manager/database_helper.dart';
+import 'package:books_project_dbms/services/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:books_project_dbms/views/home_screen.dart';
 import 'package:books_project_dbms/models/data_models/book_model.dart';
-import 'package:books_project_dbms/models/database_manager/shared_pref.dart';
+import 'package:books_project_dbms/services/shared_pref.dart';
 
 class AddBookHome extends StatefulWidget {
   const AddBookHome({super.key});

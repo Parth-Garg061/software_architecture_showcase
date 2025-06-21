@@ -1,20 +1,16 @@
 import 'package:books_project_dbms/models/data_models/book_model.dart';
-import 'package:books_project_dbms/models/database_manager/database_helper.dart';
+import 'package:books_project_dbms/services/database_helper.dart';
 
 class BookListController {
 
-  getFilteredBooks(int indexParam) {
+  Future<List<BookModel>> getFilteredBooks(int indexParam) async {
     List<BookModel> filteredBooks = [];
-    if(indexParam != -1) {
-      filteredBooks = DatabaseHelper().getFilteredBooks(indexParam);
-    } else {
-      filteredBooks = DatabaseHelper().getBooks();
-    };
+    filteredBooks = await DatabaseHelper.instance.getFilteredBooks(indexParam);
     return filteredBooks;
   }
 
   updateBook(BookModel bookModelParam) {
-    DatabaseHelper().updateBook(bookModelParam);
+   DatabaseHelper.instance.updateBook(bookModelParam);
   }
 
 }
